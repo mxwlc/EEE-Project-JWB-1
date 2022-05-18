@@ -1,27 +1,41 @@
 <html>
 <header>
-    <style>
-        h1 {
-            position: relative;
-            top: 40%;
-            left: 50%;
-            text-align: center;
-            transform: translate(-50%, -50%);
-            font-family: "Comic Sans MS";
-        }
-        button {
-            height: 100%;
-            width: 20%;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </header>
 
 <body>
+<div id="main">
     <h1>JWB EEERover site</h1>
 
     <div style="width: 100%; position: relative; top: 60%; display:flex; justify-content: center; height: 7%;">
         <button>Move</button>
         <button>Sense rock</button>
     </div>
+</div>
+<div id="track">
+    <div style="width:100%;">
+        <h2 style="text-align: center;" id="pos"></h2>
+    </div>
+    <canvas id="joystick" style="border:1px solid #000000;"></canvas>
+</div>
 </body>
+
+<script>
+    const c = document.getElementById("joystick");
+    const ctx = c.getContext("2d");
+
+    c.width = screen.height * 0.6;
+    c.height = screen.height * 0.6;
+
+    var x;
+    var y;
+
+
+
+    c.addEventListener("mousemove", function(e) {
+        x = e.clientX;
+        y = e.clientY;
+        document.getElementById('pos').innerHTML = "X: " + x + " Y: " + y;
+    });
+</script>
 </html>
